@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+	p{
+		background:yellow;font-family:微软雅黑;
+		width:400px;height: 400px; 
+	}
+	span{
+		background: red;
+	}
+</style>
+</head>
+<body>
+	<input type="text" value="正在输入">
+	<input type="text" value="替换值">
+	<input type="button" value="查找" >
+    <input type="button" value="替换">
+    <p>
+    	提供原创言情小说,穿越言情小说,纯爱言情小说衍生言情小说在线阅读,免费言情小说电子书,手机言情小说,言情小说下载,手机小说在线阅读,都市言情小说.
+    </p>
+<script type="text/javascript">
+
+	var aInp=document.getElementsByTagName('input');
+	var oP=document.getElementsByTagName('p')[0];
+	
+	 aInp[0].onclick=function(){
+	 	aInp[0].value="";
+	 }
+	aInp[1].onclick=function(){
+	 	aInp[1].value="";
+	 }
+	 aInp[2].onclick=function(){
+	 	var str=aInp[0].value;
+	 	oP.innerHTML=oP.innerHTML.split(str).join('<span>'+str+'</span>');
+	 }
+	 aInp[3].onclick=function(){
+	 	var str=aInp[0].value;
+	 	var newstr=aInp[1].value;
+	 	if(!str){return;}
+	 	else{
+	 		oP.innerHTML=oP.innerHTML.split(str).join('<span>'+newstr+'</span>');
+	 	}
+	 }
+	
+
+</script>
+</body>
+
