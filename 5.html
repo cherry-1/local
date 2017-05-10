@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+     body{background: white;text-align: center;font:100px/200px "微软雅黑";
+     }
+     h1{display: inline-block;color: rgba(0,0,0,0.5);}
+	</style>
+</head>
+<body>
+<h1> MiaoV </h1>
+<script type="text/javascript">
+window.onload=function(){
+	var oH1=document.getElementsByTagName('h1')[0];
+	var oTimer=null;
+	var iLeft=-300;
+	function toMove () {
+		oTimer=setInterval(function(){
+			clearInterval(oTimer);
+			iLeft++;
+			if (iLeft==1000) {
+				iLeft=-300;
+			}
+			oH1.style.background.Position=iLeft+'px';
+		},20);
+	}
+	toMove();
+	setInterval(function(){
+		document.title++;
+		toMove();
+	},2000);}
+</script>
+</body>
+</html>

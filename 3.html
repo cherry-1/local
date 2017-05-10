@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>wu</title>
+	<style type="text/css">
+	.box{width: 400px;height: 400px;margin: 20px auto;transition:0.5s;}
+	.box div{width: 180px;height: 180px;margin: 10px;border:1px solid #000; box-sizing:border-box; float:left;background:red;}
+	.box div:nth-child(1){border-radius:0 50%;}
+	.box div:nth-child(2){border-radius:50% 0;}
+	.box div:nth-child(3){border-radius:50% 0;}
+	.box div:nth-child(4){border-radius:0 50%;}
+	.box:hover{-webkit-transform:rotate(720deg);}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div>div1</div>
+	<div>div2</div>
+	<div>div3</div>
+	<div>div4</div>
+</div>
+</body>
+</html>
