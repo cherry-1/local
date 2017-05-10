@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#div1{
+       width: 100px;height: 100px;background: blue;position: absolute; left: 60px;}
+    </style>
+	
+</head>
+<body>
+<div id="div1"></div>
+ <script type="text/javascript">
+   window.onload=function(){
+   	var oDiv=document.getElementById('div1');
+   	mou(oDiv);
+   	function mou(obj){ 
+   		oDiv.onmousedown=function(){
+   	 	var ev=ev || event;
+   	 	var disX=ev.clientX-this.offsetLeft;
+   	 	var disY=ev.clientY-this.offsetTop;
+   	 	if (obj.setCapture) {
+   	 		obj.setCapture();
+   	 	}
+   	 	
+   	 	document.onmousemove=function(){
+   	 		var ev=ev || event;
+   	 		var L=ev.clientX-disX;
+   	 	    var T=ev.clientY-disY;
+   	 		if (L<0) {L=0;}
+   	 		else if (L>document.documentElement.clientWidth-obj.offsetLeft) 
+   	 		{
+   	 			L=document.documentElement.clientWidth-obj.offsetLeft;
+   	 		}
+   	 		obj.style.left=L+'px';
+   	 		obj.style.top=T+'px';
+   	 	}
+   	 	document.onmouseup=function(){
+   	 		document.onmousemove=null;
+   	 		if (obj.releaseCapture){
+   	 			obj.releaseCapture();
+   	 		}
+   	 		
+   	 	}
+   	 	return false;
+
+   	 	}}
+   	 }
+   	 </script>
+</body>
+</html>

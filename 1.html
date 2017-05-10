@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>无标题文档</title>
+	<style type="text/css">
+	#div1{
+       width: 100px;height: 100px;background: blue;position: absolute; left: 60px;
+	}
+	#div2{
+       width: 30px;height: 500px;background: black;position: relative;left: 10px;top: 10px;
+	}
+	#div3{
+		width: 30px;height: 30px;background: #fff;
+		position: absolute;left: 0;top: 0;
+	}
+	
+	</style>
+</head>
+<body>
+  <div id="div1"></div>
+  <div id="div2">
+  	<div id="div3">
+  		
+  	</div>
+  </div>
+ 
+   	 	
+   	 aDiv[1].onmousedown=function(){
+   	 	var ev=ev || event;
+   	 	var disY=ev.clientY-this.offsetTop;
+   	 	
+   	 	
+   	 	aDiv[1].onmousemove=function(){
+   	 		var ev=ev || event;
+            var T=ev.clientY-disY;
+   	 		var iMaxTop=aDiv[1].offsetHeight-aDiv[2].offsetHeight;
+   	 		if (T<0) {T=0;}
+   	 		else if (T>iMaxTop) 
+   	 		{ T=iMaxTop;}
+   	 		aDiv[2].style.top=T+'px';    
+   	 	}
+   	 	aDiv[1].onmouseup=function(){
+   	 		aDiv[1].onmousemove=null;
+   	 	}
+   	 }
+     
+    
+    }   
+  </script>
+  
+</body>
+</html>
