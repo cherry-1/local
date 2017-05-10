@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" ;content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	#content{
+		width: 400px;height: 400px;border: 5px solid #ccc;margin: 40px auto 0;position: relative;
+	}
+	#content a{
+		width: 40px;height: 40px;background: #000;
+		border: 5px solid #fff;position: absolute;
+		top: 175px;text-decoration: none;line-height: 40px;color: #fff;font-size:30px;opacity: 0.5; text-align: center;
+	}
+	#content a:hover{opacity: 0.9;}
+	#prev{left: 10px;}
+
+	#next{
+		right: 10px;		
+	}
+
+	#text{
+		position: absolute;margin: 0;color: #fff;line-height: 30px;text-align: center;bottom:0;left: 158px;
+	}
+	#span1{
+		position: absolute;left: 175px;
+	}
+	#img1{
+		width: 400px;height: 400px;
+	}
+
+</style>
+</head>
+<body>
+	<div id="content">
+	<a id="prev" href="javascript:;"></a>
+	<a id="next" href="javascript:;"></a>
+	<p id="text" >这是第一张图</p>
+	<span id="span1">1/6</span>
+	<img id="img1" src="1.jpeg">		
+	</div>
+	<script>
+	window.onload=function(){
+	var oDiv=document.getElementById('content');
+	var oPrev=document.getElementById('prev');
+	var oNext=document.getElementById('next');
+	var oText=document.getElementById('text');
+	var oSpan=document.getElementById('span1');
+	var oImg=document.getElementById('img1');
+	
+	var arrUrl=['1.jpeg','2.jpeg','3.jpeg','4.jpeg','5.jpeg','6.jpeg'];
+	var arrText=['一','二','三','四','五','六'];
+	var num=0;
+	function fnTab(){
+		oSpan.innerHTML=1+num+'/'+arrUrl.length;
+		oImg.src=arrUrl[num];
+		oText.innerHTML=arrText[num];
+	}
+	fnTab();
+	oNext.onclick=function(){
+		num++;
+		if(num==arrUrl.length){
+			num=0;
+		}
+		fnTab();
+
+	}
+	oPrev.onclick=function(){
+		num--;
+		if(num==-1){
+			num=arrUrl.length-1;
+		}
+		fnTab();
+	}
+
+    }
+</script>
+</body>
