@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+	<title>无标题文档</title>
+	<style type="text/css">
+	#change{
+			width: 800px;
+			height: 810px;
+			border: 1px solid #18A1FA;
+			position: relative;	
+		}
+	#change img{width: 510px;height: 370px;border: 5px solid #fff;position:absolute;top: 80px;left: 20px;}
+	
+	#menu li{ width:100px; height:50px; text-align: center;font-color:#000; background:#93ffc6;float: left; padding-top: 10px;
+			border-radius: 15px;margin-right: 20px;}
+	#pic{position: absolute;
+		right: 50px;top: 80px; }
+	#pic li{width:100px; height:80px; text-align: center;font-color:#000; background:#93ffc6;margin-top: 20px;padding-top: 10px;
+			border-radius: 15px;
+
+	}
+
+	#change .active{background: #5385a8;}
+	</style>
+</head>
+<body>
+    <div id="change">
+	<ul id="menu">
+		<li>菜单一</li>
+		<li>菜单二</li>
+	</ul>
+	<img src="">
+	<ul id="pic">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul></div>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById('change');
+		var oMenu=document.getElementById('menu');
+		var oImg=oDiv.getElementsByTagName('img')[0];
+		var oDiv=document.getElementById('change');
+	    var aLi1=oMenu.getElementsByTagName('li');
+	    var oPic=document.getElementById('pic');
+	    var aLi2=oPic.getElementsByTagName('li');
+	    
+	    var arrUrl=[['1.jpeg','2.jpeg','3.jpeg'],['4.jpeg','5.jpeg','6.jpeg']];
+	    var arrText=[['图片一','图片二','图片三'],['图片四','图片五','图片六']];
+        var num=0;
+        var sum=0;
+        var timer=null;
+
+        function fnTab(){
+        	for (var i = 0; i < aLi1.length; i++) {
+        		aLi1[i].className='';
+        		
+        		
+        	}
+        	aLi1[num%aLi1.length].className='active';
+        	
+        }
+        fnTab();
+        function fnImg(){
+        	for (var i = 0;i<aLi2.length;i++){
+        		aLi2[i].className='';
+        	}
+        	aLi2[sum%aLi2.length].className='active';
+        	for (var i = 0; i < aLi2.length; i++) {
+        		
+        		aLi2[i].innerHTML=arrText[num%aLi1.length][i];
+        	}
+        	oImg.src=arrUrl[num%aLi1.length][sum%aLi2.length];
+
+        }
+        fnImg();
+        timer=setInterval(function(){
+        	sum++;
+        	if (sum%aLi2.length==0) {
+        		num++
+        		fnTab();
+        	};
+        	fnImg();
+
+        },1000)
+
+	}
+	</script>
+</body>
+</html>

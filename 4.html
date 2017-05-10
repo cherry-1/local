@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	
+	#change span{position: relative;
+		float:left;width: 150px;height: 40px;border: 5px solid #fff;font-size:20px;text-align: center;padding-top:15px; 
+	}
+	#one {position: absolute;float:left;background:#93ffc6;
+	}
+	#two{position: absolute;float: right;background:#93ffc6;
+	}
+	#change img{width: 510px;height: 370px;border: 5px solid #fff;position:relative;float: left;top: 80px;left: -318px;}
+	#change ul{width: 40px;position: absolute;left: 550px;top: 60px;}
+	#change li{ width:100px; height:100px; text-align: center;font-color:#000;  }
+
+	#change .active{background: #5385a8;}
+</style>
+</head>
+<body>
+    <div id="change">
+	<span id="one">菜单一</span>
+	<span id="two">菜单二</span>
+	<img src="">
+	<ul ></ul></div>
+	<script type="text/javascript">
+	window.onload=function(){
+	    var oDiv=document.getElementById('change');
+	    var aSpan=oDiv.getElementsByTagName('span');
+	    var oImg=oDiv.getElementsByTagName('img')[0];
+	    var oUl=oDiv.getElementsByTagName('ul')[0];
+	    var aLi=oUl.getElementsByTagName('li');
+	    var arrUrl1=['1.jpeg','2.jpeg','3.jpeg'];
+	    var arrUrl2=['4.jpeg','5.jpeg','6.jpeg'];
+	    var arrText1=['图片一','图片二','图片三'];
+	    var arrText2=['图片四','图片五','图片六'];
+        var num=0;
+        var sum=0;
+        var timer=null;
+        
+        for (var i = 0; i < arrUrl1.length; i++) {
+        	oUl.innerHTML += '<li></li>';
+        }
+        aSpan[0].onclick=function abc(){ 
+        	
+            clearInterval( timer );	
+
+        	timer=setInterval(function(){
+        		aSpan[0].style.backgroundColor="#005a63";
+            oImg.src=arrUrl1[num]; 
+            aLi[num].innerHTML=arrText1[num]
+            for(i=0;i<arrText1.length;i++){
+                aLi[i].className=''; 
+             }
+            aLi[num].className='active'; 
+
+            	num++;
+            	num%=arrUrl1.length;
+            },1000);
+        }
+               aSpan[1].onclick=function (){ 
+        	
+            clearInterval( timer );	
+
+        	timer=setInterval(function  efg(){
+        		aSpan[1].style.backgroundColor="#005a63";
+            oImg.src=arrUrl2[num]; 
+            aLi[num].innerHTML=arrText2[num]
+            for(i=0;i<arrText2.length;i++){
+                aLi[i].className=''; 
+             }
+            aLi[num].className='active'; 
+
+            	num++;
+            	num%=arrUrl2.length;
+            },1000);
+        }
+        timer=setInterval(function(){
+            sum++;
+        	if(sum%aLi.length==0){
+            num++;
+            efg();   }
+            abc();},1000);
+    }
+	</script>
+</body>
+</html>
